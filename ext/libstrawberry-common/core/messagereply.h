@@ -20,6 +20,7 @@
 
 #include <QtGlobal>
 #include <QObject>
+#include <QThread>
 #include <QSemaphore>
 #include <QString>
 
@@ -33,7 +34,7 @@ class _MessageReplyBase : public QObject {
  public:
   explicit _MessageReplyBase(QObject *parent = nullptr);
 
-  virtual int id() const = 0;
+  virtual qint64 id() const = 0;
   bool is_finished() const { return finished_; }
   bool is_successful() const { return success_; }
 
@@ -57,29 +58,27 @@ class _MessageReplyBase : public QObject {
 template <typename MessageType>
 class MessageReply : public _MessageReplyBase {
  public:
-  explicit MessageReply(const MessageType& request_message, QObject *parent = nullptr);
+  explicit MessageReply(const MessageType &request_message, QObject *parent = nullptr);
 
-  int id() const override { return request_message_.id(); }
-  const MessageType& request_message() const { return request_message_; }
-  const MessageType& message() const { return reply_message_; }
+  qint64 id() const override { return request_message_.id(); }
+  const MessageType &request_message() const { return request_message_; }
+  const MessageType &message() const { return reply_message_; }
 
-  void SetReply(const MessageType& message);
+  void SetReply(const MessageType &message);
 
-private:
+ private:
   MessageType request_message_;
   MessageType reply_message_;
 };
 
 
 template<typename MessageType>
-MessageReply<MessageType>::MessageReply(const MessageType& request_message, QObject *parent)
-  : _MessageReplyBase(parent)
-{
+MessageReply<MessageType>::MessageReply(const MessageType &request_message, QObject *parent) : _MessageReplyBase(parent) {
   request_message_.MergeFrom(request_message);
 }
 
 template<typename MessageType>
-void MessageReply<MessageType>::SetReply(const MessageType& message) {
+void MessageReply<MessageType>::SetReply(const MessageType &message) {
 
   Q_ASSERT(!finished_);
 
@@ -89,6 +88,9 @@ void MessageReply<MessageType>::SetReply(const MessageType& message) {
 
   qLog(Debug) << "Releasing ID" << id() << "(finished)";
   semaphore_.release();
+
+  // The signal is not always emitted without this.
+  QThread::usleep(10);
 
   emit Finished(success_);
 
