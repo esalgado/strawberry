@@ -215,7 +215,12 @@ quint64 FileSystemCapacity(const QString &path) {
     return quint64(fs_info.f_blocks) * quint64(fs_info.f_bsize);
 #elif defined(Q_OS_WIN32)
   _ULARGE_INTEGER ret;
-  if (GetDiskFreeSpaceEx(QDir::toNativeSeparators(path).toLocal8Bit().constData(), nullptr,&ret, nullptr) != 0)
+#  if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+  ScopedWCharArray wchar(QDir::toNativeSeparators(path));
+  if (GetDiskFreeSpaceEx(wchar.get(), nullptr, &ret, nullptr) != 0)
+#  else
+  if (GetDiskFreeSpaceEx(QDir::toNativeSeparators(path).toLocal8Bit().constData(), nullptr, &ret, nullptr) != 0)
+#  endif
     return ret.QuadPart;
 #endif
 
@@ -231,7 +236,12 @@ quint64 FileSystemFreeSpace(const QString &path) {
     return quint64(fs_info.f_bavail) * quint64(fs_info.f_bsize);
 #elif defined(Q_OS_WIN32)
   _ULARGE_INTEGER ret;
+#  if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+  ScopedWCharArray wchar(QDir::toNativeSeparators(path));
+  if (GetDiskFreeSpaceEx(wchar.get(), &ret, nullptr, nullptr) != 0)
+#  else
   if (GetDiskFreeSpaceEx(QDir::toNativeSeparators(path).toLocal8Bit().constData(), &ret, nullptr, nullptr) != 0)
+#  endif
     return ret.QuadPart;
 #endif
 
@@ -924,7 +934,7 @@ QString MacAddress() {
 
 }
 
-QString ReplaceMessage(const QString &message, const Song &song, const QString &newline) {
+QString ReplaceMessage(const QString &message, const Song &song, const QString &newline, const bool html_escaped) {
 
   QRegularExpression variable_replacer("[%][a-z]+[%]");
   QString copy(message);
@@ -935,7 +945,7 @@ QString ReplaceMessage(const QString &message, const Song &song, const QString &
   for (match = variable_replacer.match(message, pos) ; match.hasMatch() ; match = variable_replacer.match(message, pos)) {
     pos = match.capturedStart();
     QStringList captured = match.capturedTexts();
-    copy.replace(captured[0], ReplaceVariable(captured[0], song, newline));
+    copy.replace(captured[0], ReplaceVariable(captured[0], song, newline, html_escaped));
     pos += match.capturedLength();
   }
 
@@ -943,62 +953,76 @@ QString ReplaceMessage(const QString &message, const Song &song, const QString &
   if (index_of >= 0) copy = copy.remove(index_of, 3);
 
   return copy;
+
 }
 
-QString ReplaceVariable(const QString &variable, const Song &song, const QString &newline) {
+QString ReplaceVariable(const QString &variable, const Song &song, const QString &newline, const bool html_escaped) {
 
-  QString return_value;
-  if (variable == "%artist%") {
-    return song.artist().toHtmlEscaped();
+  QString value = variable;
+
+  if (variable == "%title%") {
+    value = song.PrettyTitle();
   }
   else if (variable == "%album%") {
-    return song.album().toHtmlEscaped();
+    value = song.album();
   }
-  else if (variable == "%title%") {
-    return song.PrettyTitle().toHtmlEscaped();
+  else if (variable == "%artist%") {
+    value = song.artist();
   }
   else if (variable == "%albumartist%") {
-    return song.effective_albumartist().toHtmlEscaped();
-  }
-  else if (variable == "%year%") {
-    return song.PrettyYear().toHtmlEscaped();
-  }
-  else if (variable == "%composer%") {
-    return song.composer().toHtmlEscaped();
-  }
-  else if (variable == "%performer%") {
-    return song.performer().toHtmlEscaped();
-  }
-  else if (variable == "%grouping%") {
-    return song.grouping().toHtmlEscaped();
-  }
-  else if (variable == "%length%") {
-    return song.PrettyLength().toHtmlEscaped();
-  }
-  else if (variable == "%disc%") {
-    return return_value.setNum(song.disc()).toHtmlEscaped();
+    value = song.effective_albumartist();
   }
   else if (variable == "%track%") {
-    return return_value.setNum(song.track()).toHtmlEscaped();
+    value.setNum(song.track());
+  }
+  else if (variable == "%disc%") {
+    value.setNum(song.disc());
+  }
+  else if (variable == "%year%") {
+    value = song.PrettyYear();
+  }
+  else if (variable == "%originalyear%") {
+    value = song.PrettyOriginalYear();
   }
   else if (variable == "%genre%") {
-    return song.genre().toHtmlEscaped();
+    value = song.genre();
   }
-  else if (variable == "%playcount%") {
-    return return_value.setNum(song.playcount()).toHtmlEscaped();
+  else if (variable == "%composer%") {
+    value = song.composer();
   }
-  else if (variable == "%skipcount%") {
-    return return_value.setNum(song.skipcount()).toHtmlEscaped();
+  else if (variable == "%performer%") {
+    value = song.performer();
+  }
+  else if (variable == "%grouping%") {
+    value = song.grouping();
+  }
+  else if (variable == "%length%") {
+    value = song.PrettyLength();
   }
   else if (variable == "%filename%") {
-    return song.basefilename().toHtmlEscaped();
+    value = song.basefilename();
+  }
+  else if (variable == "%url%") {
+    value = song.url().toString();
+  }
+  else if (variable == "%playcount%") {
+    value.setNum(song.playcount());
+  }
+  else if (variable == "%skipcount%") {
+    value.setNum(song.skipcount());
+  }
+  else if (variable == "%rating%") {
+    value = song.PrettyRating();
   }
   else if (variable == "%newline%") {
-    return QString(newline);
+    return QString(newline); // No HTML escaping, return immediately.
   }
 
-  //if the variable is not recognized, just return it
-  return variable;
+  if (html_escaped) {
+    value = value.toHtmlEscaped();
+  }
+  return value;
+
 }
 
 bool IsColorDark(const QColor &color) {
