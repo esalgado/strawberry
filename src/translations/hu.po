@@ -184,7 +184,7 @@ msgstr "%1 dal található"
 msgid "%1 songs found (showing %2)"
 msgstr ""
 
-#: core/utilities.cpp:467
+#: core/utilities.cpp:477
 #, qt-format
 msgid ""
 "%1 songs in %2 different directories selected, are you sure you want to open "
@@ -507,7 +507,7 @@ msgid "ASF (WMA)"
 msgstr "ASF (WMA)"
 
 #: covermanager/albumcovermanager.cpp:133
-#: covermanager/albumcoversearcher.cpp:191
+#: covermanager/albumcoversearcher.cpp:199
 #: ../build/src/ui_internetcollectionviewcontainer.h:141
 msgid "Abort"
 msgstr "Megszakít"
@@ -3994,8 +3994,8 @@ msgstr "A %1 scrobbler nincs hitelesítve"
 msgid "Scroll over icon to change track"
 msgstr "Görgetés az ikon felett a számváltáshoz"
 
-#: covermanager/albumcoversearcher.cpp:199
-#: covermanager/albumcoversearcher.cpp:218
+#: covermanager/albumcoversearcher.cpp:207
+#: covermanager/albumcoversearcher.cpp:226
 #: ../build/src/ui_albumcoversearcher.h:113
 #: ../build/src/ui_internettabsview.h:119
 msgid "Search"
@@ -4216,7 +4216,7 @@ msgstr "Megjelenítés teljes méretben..."
 msgid "Show in collection..."
 msgstr "Megjelenítés a gyűjteményben..."
 
-#: core/utilities.cpp:461 core/utilities.cpp:467
+#: core/utilities.cpp:471 core/utilities.cpp:477
 msgid "Show in file browser"
 msgstr "Megnyitás a fájlböngészőben"
 
@@ -4824,7 +4824,7 @@ msgstr "OSD láthatóság bekapcsolása"
 msgid "Tomorrow"
 msgstr "Holnap"
 
-#: core/utilities.cpp:461
+#: core/utilities.cpp:471
 msgid "Too many songs selected."
 msgstr "Túl sok dal van kiválasztva."
 

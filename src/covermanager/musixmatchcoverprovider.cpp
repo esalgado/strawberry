@@ -61,14 +61,14 @@ bool MusixmatchCoverProvider::StartSearch(const QString &artist, const QString &
   QString album_stripped = album;
 
   artist_stripped = artist_stripped.replace('/', '-');
-  artist_stripped = artist_stripped.remove(QRegularExpression("[^A-Za-z0-9\\- ]"));
+  artist_stripped = artist_stripped.remove(QRegularExpression("[^\\w0-9\\- ]", QRegularExpression::UseUnicodePropertiesOption));
   artist_stripped = artist_stripped.simplified();
   artist_stripped = artist_stripped.replace(' ', '-');
   artist_stripped = artist_stripped.replace(QRegularExpression("(-)\\1+"), "-");
   artist_stripped = artist_stripped.toLower();
 
   album_stripped = album_stripped.replace('/', '-');
-  album_stripped = album_stripped.remove(QRegularExpression("[^a-zA-Z0-9\\- ]"));
+  album_stripped = album_stripped.remove(QRegularExpression("[^\\w0-9\\- ]", QRegularExpression::UseUnicodePropertiesOption));
   album_stripped = album_stripped.simplified();
   album_stripped = album_stripped.replace(' ', '-').toLower();
   album_stripped = album_stripped.replace(QRegularExpression("(-)\\1+"), "-");
@@ -82,6 +82,9 @@ bool MusixmatchCoverProvider::StartSearch(const QString &artist, const QString &
   req.setAttribute(QNetworkRequest::RedirectPolicyAttribute, QNetworkRequest::NoLessSafeRedirectPolicy);
 #else
   req.setAttribute(QNetworkRequest::FollowRedirectsAttribute, true);
+#endif
+#if QT_VERSION >= QT_VERSION_CHECK(5, 15, 0)
+  req.setAttribute(QNetworkRequest::Http2AllowedAttribute, false);
 #endif
   QNetworkReply *reply = network_->get(req);
   replies_ << reply;

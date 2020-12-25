@@ -65,7 +65,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON
       - name: Create source tarball
         working-directory: build
         run: ../dist/scripts/maketarball.sh
@@ -133,7 +133,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON
       - name: Create source tarball
         working-directory: build
         run: ../dist/scripts/maketarball.sh
@@ -209,7 +209,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON
       - name: Create source tarball
         working-directory: build
         run: ../dist/scripts/maketarball.sh
@@ -287,7 +287,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WITH_QT5=ON
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON -DBUILD_WITH_QT5=ON
       - name: Create source tarball
         working-directory: build
         run: ../dist/scripts/maketarball.sh
@@ -308,8 +308,6 @@ jobs:
       image: opensuse/tumbleweed
     steps:
       - uses: actions/checkout@v1.2.0
-      - name: Add Qt 6 repository
-        run: zypper -n ar -c -f -n 'repo-qt6' https://download.opensuse.org/repositories/home:/jonaski:/qt6/openSUSE_Tumbleweed/ repo-qt6
       - name: Update packages
         run: zypper --non-interactive --gpg-auto-import-keys ref
       - name: Upgrade packages
@@ -349,7 +347,6 @@ jobs:
             qt6-sql-devel
             qt6-dbus-devel
             qt6-test-devel
-            qt6-x11extras-devel
             qt6-base-common-devel
             qt6-sql-sqlite
             qt6-linguist-devel
@@ -367,7 +364,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WITH_QT6=ON
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON -DBUILD_WITH_QT6=ON
       - name: Create source tarball
         working-directory: build
         run: ../dist/scripts/maketarball.sh
@@ -444,7 +441,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON
       - name: Create source tarball
         working-directory: build
         run: ../dist/scripts/maketarball.sh
@@ -521,7 +518,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON
       - name: Create source tarball
         working-directory: build
         run: ../dist/scripts/maketarball.sh
@@ -598,7 +595,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON
       - name: Create source tarball
         working-directory: build
         run: ../dist/scripts/maketarball.sh
@@ -692,90 +689,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
-      - name: Create source tarball
-        working-directory: build
-        run: ../dist/scripts/maketarball.sh
-      - name: Create RPM build sources directories
-        working-directory: build
-        run: mkdir -p ~/rpmbuild/SOURCES /usr/src/packages/SOURCES
-      - name: Copy source tarball
-        working-directory: build
-        run: cp strawberry-*.tar.xz ~/rpmbuild/SOURCES/
-      - name: Build RPM
-        working-directory: build
-        run: rpmbuild -ba ../dist/unix/strawberry.spec
-
-
-  build_mageia_7:
-    name: Build Mageia 7
-    runs-on: ubuntu-latest
-    container:
-      image: mageia:7
-    steps:
-      - uses: actions/checkout@v1.2.0
-
-      - name: Update packages
-        run: urpmi.update --auto -a
-
-      - name: Configure auto update
-        run: urpmi --auto --auto-update
-
-      - name: Install Mageia dependencies
-        run: >
-            urpmi --auto --force
-            urpmi-debuginfo-install
-            git
-            tar
-            rpmdevtools
-            make
-            cmake
-            glibc
-            binutils
-            gcc-c++
-            man
-            gettext
-            notification-daemon
-            dbus-devel
-            libgnutls-devel
-            lib64boost-devel
-            lib64protobuf-devel
-            protobuf-compiler
-            lib64sqlite3-devel
-            lib64alsa2-devel
-            lib64pulseaudio-devel
-            lib64notify-devel
-            lib64qt5core-devel
-            lib64qt5gui-devel
-            lib64qt5widgets-devel
-            lib64qt5network-devel
-            lib64qt5concurrent-devel
-            lib64qt5sql-devel
-            lib64qt5dbus-devel
-            lib64qt5x11extras-devel
-            lib64qt5help-devel
-            libqt5test-devel
-            lib64gstreamer1.0-devel
-            lib64gstreamer-plugins-base1.0-devel
-            lib64cdio-devel
-            lib64gpod-devel
-            lib64mtp-devel
-            lib64raw1394-devel
-            lib64chromaprint-devel
-            libfftw-devel
-            desktop-file-utils
-            appstream-util
-            libappstream-glib8
-            hicolor-icon-theme
-            qt5ct
-            lib64mesaegl1
-      - name: Create Build Environment
-        shell: bash
-        run: cmake -E make_directory build
-      - name: Configure CMake
-        shell: bash
-        working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON
       - name: Create source tarball
         working-directory: build
         run: ../dist/scripts/maketarball.sh
@@ -898,7 +812,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON
       - name: make deb
         shell: bash
         run: dpkg-buildpackage -b -d -uc -us -nc -j2
@@ -960,7 +874,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON
       - name: make deb
         shell: bash
         run: dpkg-buildpackage -b -d -uc -us -nc -j2
@@ -1022,7 +936,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON
       - name: make deb
         shell: bash
         run: dpkg-buildpackage -b -d -uc -us -nc -j2
@@ -1084,7 +998,7 @@ jobs:
       - name: Configure CMake
         shell: bash
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON
       - name: make deb
         shell: bash
         run: dpkg-buildpackage -b -d -uc -us -nc -j2
@@ -1121,6 +1035,15 @@ jobs:
           create-dmg
           taglib
 
+      - name: Install Sparkle
+        run: brew install --cask sparkle
+
+      - name: Link Sparkle
+        shell: bash
+        run: |
+          sudo ln -s /usr/local/Caskroom/sparkle/$(ls /usr/local/Caskroom/sparkle | head -n1)/Sparkle.framework /Library/Frameworks/Sparkle.framework
+          sudo ln -s /usr/local/Caskroom/sparkle/$(ls /usr/local/Caskroom/sparkle | head -n1)/Sparkle.framework.dSYM /Library/Frameworks/Sparkle.framework.dSYM
+
       - name: Delete conflicting taglib system headers
         shell: bash
         run: rm -rf /usr/local/include/taglib
@@ -1137,7 +1060,7 @@ jobs:
           GST_SCANNER_PATH: /usr/local/opt/gstreamer/libexec/gstreamer-1.0/gst-plugin-scanner
           GST_PLUGIN_PATH: /usr/local/lib/gstreamer-1.0
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DUSE_BUNDLE=ON
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON -DUSE_BUNDLE=ON
       - name: Build
         working-directory: build
         shell: bash
@@ -1153,17 +1076,13 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: upload-macos-catalina
-          path: build/strawberry-*-catalina.dmg
+          path: build/strawberry-*-catalina-*.dmg
 
   build-macos-bigsur:
     name: Build macOS Big Sur
     runs-on: macos-11.0
     steps:
       - uses: actions/checkout@v1.2.0
-      - name: Update
-        run: brew update
-      - name: Upgrade
-        run: brew upgrade
       - name: Install packages
         run: >
           brew install
@@ -1190,6 +1109,15 @@ jobs:
           create-dmg
           taglib
 
+      - name: Install Sparkle
+        run: brew install --cask sparkle
+
+      - name: Link Sparkle
+        shell: bash
+        run: |
+          sudo ln -s /usr/local/Caskroom/sparkle/$(ls /usr/local/Caskroom/sparkle | head -n1)/Sparkle.framework /Library/Frameworks/Sparkle.framework
+          sudo ln -s /usr/local/Caskroom/sparkle/$(ls /usr/local/Caskroom/sparkle | head -n1)/Sparkle.framework.dSYM /Library/Frameworks/Sparkle.framework.dSYM
+
       - name: Delete conflicting taglib system headers
         shell: bash
         run: rm -rf /usr/local/include/taglib
@@ -1206,7 +1134,7 @@ jobs:
           GST_SCANNER_PATH: /usr/local/opt/gstreamer/libexec/gstreamer-1.0/gst-plugin-scanner
           GST_PLUGIN_PATH: /usr/local/lib/gstreamer-1.0
         working-directory: build
-        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DUSE_BUNDLE=ON
+        run: cmake .. -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DBUILD_WERROR=ON -DUSE_BUNDLE=ON
       - name: Build
         working-directory: build
         shell: bash
@@ -1222,7 +1150,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: upload-macos-bigsur
-          path: build/strawberry-*-bigsur.dmg
+          path: build/strawberry-*-bigsur-*.dmg
 
 
   build-windows:
@@ -1250,6 +1178,7 @@ jobs:
           cmake ..
           -DCMAKE_TOOLCHAIN_FILE=../cmake/Toolchain-x86_64-w64-mingw32-shared.cmake
           -DCMAKE_BUILD_TYPE=Release
+          -DBUILD_WERROR=ON
           -DARCH=x86_64
           -DENABLE_WIN32_CONSOLE=OFF
           -DENABLE_DBUS=OFF
@@ -1387,7 +1316,7 @@ jobs:
       - name: rsync
         run: |
           set -x
-          for i in $(find uploads -type f -name 'strawberry-*-catalina.dmg'); do
+          for i in $(find uploads -type f -name 'strawberry-*-catalina-*.dmg'); do
             rsync -e "ssh -p 50220 -o StrictHostKeyChecking=no" -va $i travis@echoes.jkvinge.net:/home/travis/builds/macos/catalina/
           done
 
@@ -1410,6 +1339,6 @@ jobs:
       - name: rsync
         run: |
           set -x
-          for i in $(find uploads -type f -name 'strawberry-*-bigsur.dmg'); do
+          for i in $(find uploads -type f -name 'strawberry-*-bigsur-*.dmg'); do
             rsync -e "ssh -p 50220 -o StrictHostKeyChecking=no" -va $i travis@echoes.jkvinge.net:/home/travis/builds/macos/bigsur/
           done

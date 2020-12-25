@@ -185,7 +185,7 @@ msgstr ""
 msgid "%1 songs found (showing %2)"
 msgstr ""
 
-#: core/utilities.cpp:467
+#: core/utilities.cpp:477
 #, qt-format
 msgid ""
 "%1 songs in %2 different directories selected, are you sure you want to open "
@@ -504,7 +504,7 @@ msgid "ASF (WMA)"
 msgstr "ASF(WMA)"
 
 #: covermanager/albumcovermanager.cpp:133
-#: covermanager/albumcoversearcher.cpp:191
+#: covermanager/albumcoversearcher.cpp:199
 #: ../build/src/ui_internetcollectionviewcontainer.h:141
 msgid "Abort"
 msgstr "중지"
@@ -3945,8 +3945,8 @@ msgstr "스크로블러 %1이(가) 인증되지 않았습니다!"
 msgid "Scroll over icon to change track"
 msgstr "트랙을 변경하려면 아이콘  위에서 스크롤하십시오"
 
-#: covermanager/albumcoversearcher.cpp:199
-#: covermanager/albumcoversearcher.cpp:218
+#: covermanager/albumcoversearcher.cpp:207
+#: covermanager/albumcoversearcher.cpp:226
 #: ../build/src/ui_albumcoversearcher.h:113
 #: ../build/src/ui_internettabsview.h:119
 msgid "Search"
@@ -4167,7 +4167,7 @@ msgstr "전체 크기 표시..."
 msgid "Show in collection..."
 msgstr "라이브러리에 표시..."
 
-#: core/utilities.cpp:461 core/utilities.cpp:467
+#: core/utilities.cpp:471 core/utilities.cpp:477
 msgid "Show in file browser"
 msgstr "파일 탐색기에 표시"
 
@@ -4750,7 +4750,7 @@ msgstr "예쁜 OSD 표시 여부 전환"
 msgid "Tomorrow"
 msgstr "내일"
 
-#: core/utilities.cpp:461
+#: core/utilities.cpp:471
 msgid "Too many songs selected."
 msgstr "너무 많은 곡을 선택했습니다."
 
