@@ -22,7 +22,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "MIME-Version: 1.0\n"
-"PO-Revision-Date: 2020-12-08 03:00-0500\n"
+"PO-Revision-Date: 2020-12-24 03:46-0500\n"
 "Last-Translator: Jonatan Nyberg <jonatan.nyberg.karl@gmail.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
@@ -192,7 +192,7 @@ msgstr "%1 låtar hittades"
 msgid "%1 songs found (showing %2)"
 msgstr "%1 låtar hittades (visar %2)"
 
-#: core/utilities.cpp:467
+#: core/utilities.cpp:477
 #, qt-format
 msgid ""
 "%1 songs in %2 different directories selected, are you sure you want to open "
@@ -245,11 +245,11 @@ msgstr "%n återstår"
 #: ../build/src/ui_contextsettingspage.h:428
 #: ../build/src/ui_notificationssettingspage.h:466
 msgid "%originalyear%"
-msgstr ""
+msgstr "%originalyear%"
 
 #: ../build/src/ui_contextsettingspage.h:424
 msgid "%rating%"
-msgstr ""
+msgstr "%rating%"
 
 #: ../build/src/ui_contextsettingspage.h:433
 msgid "%title - %artist%"
@@ -258,7 +258,7 @@ msgstr "%title - %artist%"
 #: ../build/src/ui_contextsettingspage.h:420
 #: ../build/src/ui_notificationssettingspage.h:462
 msgid "%url%"
-msgstr ""
+msgstr "%url%"
 
 #: ../build/src/ui_mainwindow.h:653
 msgid "&About Strawberry"
@@ -286,7 +286,7 @@ msgstr "&Omslagshanterare"
 
 #: ../build/src/ui_shortcutssettingspage.h:257
 msgid "&Custom"
-msgstr "A&npassat"
+msgstr "A&npassad"
 
 #: ../build/src/ui_shortcutssettingspage.h:256
 msgid "&Default"
@@ -494,7 +494,7 @@ msgstr ""
 
 #: ../build/src/ui_playlistsettingspage.h:169
 msgid "A&utomatic"
-msgstr "A&utomatisk"
+msgstr "A&utomatiska"
 
 #: smartplaylists/smartplaylistsearchterm.cpp:412
 msgid "A-Z"
@@ -517,7 +517,7 @@ msgid "ASF (WMA)"
 msgstr "ASF (WMA)"
 
 #: covermanager/albumcovermanager.cpp:133
-#: covermanager/albumcoversearcher.cpp:191
+#: covermanager/albumcoversearcher.cpp:199
 #: ../build/src/ui_internetcollectionviewcontainer.h:141
 msgid "Abort"
 msgstr "Avbryt"
@@ -540,7 +540,7 @@ msgstr "Om Strawberry"
 
 #: ../build/src/ui_playlistsettingspage.h:170
 msgid "Absolu&te"
-msgstr "Absolu&te"
+msgstr "Absolu&ta"
 
 #: playlist/playlistsaveoptionsdialog.cpp:42
 msgid "Absolute"
@@ -603,7 +603,7 @@ msgstr "Lägg till sökterm"
 #: ../build/src/ui_contextsettingspage.h:422
 #: ../build/src/ui_notificationssettingspage.h:464
 msgid "Add song URL"
-msgstr ""
+msgstr "Lägg till låtens webbadress"
 
 #: ../build/src/ui_contextsettingspage.h:375
 #: ../build/src/ui_notificationssettingspage.h:414
@@ -653,7 +653,7 @@ msgstr "Lägg till tagg för låtens längd"
 #: ../build/src/ui_contextsettingspage.h:430
 #: ../build/src/ui_notificationssettingspage.h:468
 msgid "Add song original year tag"
-msgstr ""
+msgstr "Lägg till låtens originalårstagg"
 
 #: ../build/src/ui_contextsettingspage.h:390
 #: ../build/src/ui_notificationssettingspage.h:429
@@ -717,7 +717,7 @@ msgstr "Lägg till låtar"
 #: ../build/src/ui_behavioursettingspage.h:317
 #: ../build/src/ui_behavioursettingspage.h:325
 msgid "Add to the queue"
-msgstr "Lägg till i kön"
+msgstr "Lägga till i kön"
 
 #: ../build/src/ui_transcodedialog.h:220
 msgid "Add..."
@@ -802,7 +802,7 @@ msgstr "Album av %1"
 
 #: ../build/src/ui_contextsettingspage.h:443
 msgid "Albums by Artist"
-msgstr "Album av Artist"
+msgstr "Album av artist"
 
 #: ../build/src/ui_tidalsettingspage.h:327
 #: ../build/src/ui_qobuzsettingspage.h:284
@@ -857,7 +857,7 @@ msgstr "Vid sidan av originalen"
 #: ../build/src/ui_behavioursettingspage.h:307
 #: ../build/src/ui_behavioursettingspage.h:321
 msgid "Always start playing"
-msgstr "Starta alltid uppspelning"
+msgstr "Alltid starta uppspelning"
 
 #: device/gpodloader.cpp:79
 msgid "An error occurred loading the iTunes database"
@@ -893,11 +893,11 @@ msgstr "Lägg till filer/webbadresser till spellistan"
 #: widgets/fileviewlist.cpp:44 internet/internetsearchview.cpp:318
 #: internet/internetcollectionview.cpp:311 device/deviceview.cpp:234
 msgid "Append to current playlist"
-msgstr "Lägg till i den aktuella spellistan"
+msgstr "Lägg till i aktuell spellista"
 
 #: ../build/src/ui_behavioursettingspage.h:314
 msgid "Append to the playlist"
-msgstr "Lägg till i spellistan"
+msgstr "Lägga till i spellistan"
 
 #: ../build/src/ui_backendsettingspage.h:507
 msgid "Apply compression to prevent clipping"
@@ -1006,7 +1006,7 @@ msgstr "Välj automatiskt spår som nu spelas"
 
 #: ../build/src/ui_playlistsettingspage.h:167
 msgid "Automatically sort playlist when inserting songs"
-msgstr "Sortera spellistan automatiskt när du sätter in låtar"
+msgstr "Sortera spellistan automatiskt när du lägger in låtar"
 
 #: widgets/freespacebar.cpp:68
 msgid "Available"
@@ -1161,7 +1161,7 @@ msgstr "Byt genväg..."
 
 #: ../build/src/ui_behavioursettingspage.h:324
 msgid "Change the currently playing song"
-msgstr "Byt låt som nu spelas"
+msgstr "Byta låt som nu spelas"
 
 #: core/commandlineoptions.cpp:188
 msgid "Change the language"
@@ -1185,7 +1185,7 @@ msgstr "Välj data att importera från last.fm"
 
 #: ../build/src/ui_notificationssettingspage.h:501
 msgid "Choose font..."
-msgstr "Välj typsnitt..."
+msgstr "Välj teckensnitt..."
 
 #: smartplaylists/smartplaylistquerywizardplugin.cpp:154
 msgid "Choose how the playlist is sorted and how many songs it will contain."
@@ -1202,7 +1202,7 @@ msgstr "Välj de leverantörer du vill använda vid sökning efter låttexter."
 
 #: equalizer/equalizer.cpp:138
 msgid "Classical"
-msgstr "Klassisk"
+msgstr "Klassiskt"
 
 #: widgets/lineedit.cpp:61 transcoder/transcodedialog.cpp:99
 #: ../build/src/ui_queueview.h:142
@@ -1388,11 +1388,11 @@ msgstr "Kopiera albumomslag"
 #: core/mainwindow.cpp:707 widgets/fileviewlist.cpp:48
 #: device/deviceview.cpp:239
 msgid "Copy to collection..."
-msgstr "Kopiera till samlingen..."
+msgstr "Kopiera till samling..."
 
 #: playlist/playlistlistcontainer.cpp:380
 msgid "Copy to device"
-msgstr "Kopiera till enheten"
+msgstr "Kopiera till enhet"
 
 #: core/mainwindow.cpp:710 context/contextalbumsview.cpp:262
 #: collection/collectionview.cpp:352 playlist/playlistlistcontainer.cpp:105
@@ -1863,7 +1863,7 @@ msgstr "Aktivera poster"
 #: ../build/src/ui_collectionsettingspage.h:432
 #: ../build/src/ui_playlistsettingspage.h:166
 msgid "Enable delete files in the right click context menu"
-msgstr "Aktivera ta bort filer i snabbmenyn till högerklick"
+msgstr "Aktivera att ta bort filer i högerklickssnabbmenyn"
 
 #: ../build/src/ui_equalizer.h:176
 msgid "Enable equalizer"
@@ -2209,11 +2209,11 @@ msgstr "Passa omslag till bredd"
 #: ../build/src/ui_contextsettingspage.h:448
 #: ../build/src/ui_contextsettingspage.h:453
 msgid "Font"
-msgstr "Typsnitt"
+msgstr "Teckensnitt"
 
 #: ../build/src/ui_contextsettingspage.h:452
 msgid "Font for data and lyrics"
-msgstr "Typsnitt för data och låttexter"
+msgstr "Teckensnitt för data och låttexter"
 
 #: ../build/src/ui_contextsettingspage.h:447
 msgid "Font for headline"
@@ -2222,7 +2222,7 @@ msgstr "Teckensnitt för rubrik"
 #: ../build/src/ui_contextsettingspage.h:449
 #: ../build/src/ui_contextsettingspage.h:454
 msgid "Font size"
-msgstr "Typsnittsstorlek"
+msgstr "Teckensnittsstorlek"
 
 #: dialogs/snapdialog.cpp:56
 #, qt-format
@@ -2629,7 +2629,7 @@ msgstr "Språk"
 
 #: equalizer/equalizer.cpp:144
 msgid "Laptop/Headphones"
-msgstr "Laptop/hörlurar"
+msgstr "Bärbar dator/hörlurar"
 
 #: equalizer/equalizer.cpp:145
 msgid "Large Hall"
@@ -2646,7 +2646,7 @@ msgstr "Stort sidofält"
 #: playlist/playlist.cpp:1277 smartplaylists/smartplaylistsmodel.cpp:94
 #: ../build/src/ui_lastfmimportdialog.h:150
 msgid "Last played"
-msgstr "Senast spelad"
+msgstr "Senast spelade"
 
 #: ../build/src/ui_edittagdialog.h:693
 msgctxt "A playlist's tag."
@@ -3209,7 +3209,7 @@ msgstr "Öppna enhet"
 #: internet/internetcollectionview.cpp:313 device/deviceview.cpp:236
 #: ../build/src/ui_behavioursettingspage.h:316
 msgid "Open in new playlist"
-msgstr "Öppna i en ny spellista"
+msgstr "Öppna i ny spellista"
 
 #: ../build/src/ui_shortcutssettingspage.h:243
 #: ../build/src/ui_shortcutssettingspage.h:250
@@ -3291,7 +3291,7 @@ msgstr "Skriv endast över m&indre"
 
 #: ../build/src/ui_mainwindow.h:717
 msgid "P&laylist"
-msgstr "S&pellista"
+msgstr "&Spellista"
 
 #: device/udisks2lister.cpp:116
 msgid "Partition label"
@@ -3299,7 +3299,7 @@ msgstr "Partitionsnamn"
 
 #: equalizer/equalizer.cpp:147
 msgid "Party"
-msgstr "Party"
+msgstr "Fest"
 
 #: ../build/src/ui_networkproxysettingspage.h:180
 #: ../build/src/ui_userpassdialog.h:92
@@ -3592,7 +3592,7 @@ msgstr "Lägg till valda spår i kön för att spela som nästa"
 #: core/mainwindow.cpp:1857 collection/collectionview.cpp:347
 #: internet/internetcollectionview.cpp:317
 msgid "Queue to play next"
-msgstr "Kö för att spela nästa"
+msgstr "Lägg till i kön för att spela som nästa"
 
 #: core/mainwindow.cpp:1850 context/contextalbumsview.cpp:257
 #: collection/collectionview.cpp:346
@@ -3615,7 +3615,7 @@ msgstr "Betyg"
 
 #: ../build/src/ui_playlistsettingspage.h:171
 msgid "Re&lative"
-msgstr "Re&lativ"
+msgstr "Re&lativa"
 
 #: covermanager/albumcovermanager.cpp:240
 msgid "Really cancel?"
@@ -3693,11 +3693,11 @@ msgstr "Ta bort"
 
 #: ../build/src/ui_mainwindow.h:706
 msgid "Remove &duplicates from playlist"
-msgstr "Ta bort &dubbletter från spellistan"
+msgstr "Ta bort &dubbletter från spellista"
 
 #: ../build/src/ui_mainwindow.h:707
 msgid "Remove &unavailable tracks from playlist"
-msgstr "Ta bort &otillgängliga spår från spellistan"
+msgstr "Ta bort &otillgängliga spår från spellista"
 
 #: ../build/src/ui_collectionsettingspage.h:402
 msgid "Remove folder"
@@ -3709,7 +3709,7 @@ msgstr "Ta bort från favoriter"
 
 #: ../build/src/ui_mainwindow.h:671
 msgid "Remove from playlist"
-msgstr "Ta bort från spellistan"
+msgstr "Ta bort från spellista"
 
 #: playlist/playlisttabbar.cpp:210
 msgid "Remove playlist"
@@ -3768,7 +3768,7 @@ msgstr "Ersätter mellanslag med understreck"
 
 #: ../build/src/ui_behavioursettingspage.h:315
 msgid "Replace the playlist"
-msgstr "Ersätt spellistan"
+msgstr "Ersätta spellistan"
 
 #: ../build/src/ui_backendsettingspage.h:500
 msgid "Replay Gain"
@@ -3890,7 +3890,7 @@ msgstr "Kör"
 
 #: ../build/src/ui_mainwindow.h:657
 msgid "S&huffle playlist"
-msgstr "B&landa spellistan"
+msgstr "B&landa spellista"
 
 #: ../build/src/ui_networkproxysettingspage.h:175
 msgid "SOCKS proxy"
@@ -3995,8 +3995,8 @@ msgstr "Skrobblare %1 är inte autentiserad!"
 msgid "Scroll over icon to change track"
 msgstr "Rulla över ikonen med muspekaren för att byta spår"
 
-#: covermanager/albumcoversearcher.cpp:199
-#: covermanager/albumcoversearcher.cpp:218
+#: covermanager/albumcoversearcher.cpp:207
+#: covermanager/albumcoversearcher.cpp:226
 #: ../build/src/ui_albumcoversearcher.h:113
 #: ../build/src/ui_internettabsview.h:119
 msgid "Search"
@@ -4072,11 +4072,11 @@ msgstr "Välj bästa möjliga matchning"
 
 #: ../build/src/ui_appearancesettingspage.h:550
 msgid "Select foreground color:"
-msgstr "Väl förgrundsfärg:"
+msgstr "Välj förgrundsfärg:"
 
 #: ../build/src/ui_appearancesettingspage.h:558
 msgid "Select tabbar color:"
-msgstr "Välj tabbar-färg:"
+msgstr "Välj färg för flikfält:"
 
 #: ../build/src/ui_transcodedialog.h:234
 msgid "Select..."
@@ -4217,7 +4217,7 @@ msgstr "Visa full storlek..."
 msgid "Show in collection..."
 msgstr "Visa i samlingen..."
 
-#: core/utilities.cpp:461 core/utilities.cpp:467
+#: core/utilities.cpp:471 core/utilities.cpp:477
 msgid "Show in file browser"
 msgstr "Visa i filhanteraren"
 
@@ -4272,7 +4272,7 @@ msgstr "Visa låttekniska data"
 
 #: ../build/src/ui_behavioursettingspage.h:288
 msgid "Show system tray icon"
-msgstr "Visa ikonen för systemfältet"
+msgstr "Visa ikon i systemfältet"
 
 #: ../build/src/ui_behavioursettingspage.h:296
 msgid "Show the main window"
@@ -4296,7 +4296,7 @@ msgstr "Blanda album"
 
 #: osd/osdbase.cpp:335 ../build/src/ui_playlistsequence.h:118
 msgid "Shuffle all"
-msgstr "Blanda allt"
+msgstr "Blanda alla"
 
 #: osd/osdbase.cpp:336 ../build/src/ui_playlistsequence.h:117
 msgid "Shuffle tracks in this album"
@@ -4325,7 +4325,7 @@ msgstr "Ska"
 
 #: core/commandlineoptions.cpp:170
 msgid "Skip backwards in playlist"
-msgstr "Gå bakåt i spellista"
+msgstr "Hoppa bakåt i spellista"
 
 #: playlist/playlist.cpp:1276 ../build/src/ui_edittagdialog.h:691
 msgid "Skip count"
@@ -4333,7 +4333,7 @@ msgstr "Antal överhoppningar"
 
 #: core/commandlineoptions.cpp:171
 msgid "Skip forwards in playlist"
-msgstr "Gå framåt i spellista"
+msgstr "Hoppa framåt i spellista"
 
 #: core/mainwindow.cpp:1862
 msgid "Skip selected tracks"
@@ -4420,7 +4420,7 @@ msgstr "Standard"
 
 #: core/commandlineoptions.cpp:166
 msgid "Start the playlist currently playing"
-msgstr "Starta spellista som nu spelas"
+msgstr "Starta spellistan som nu spelas"
 
 #: transcoder/transcodedialog.cpp:125
 msgid "Start transcoding"
@@ -4474,7 +4474,7 @@ msgstr "Strawberry Music Player"
 
 #: ../build/src/ui_notificationssettingspage.h:496
 msgid "Strawberry Red"
-msgstr "Strawberry Red"
+msgstr "Jordgubbsröd"
 
 #: ../build/src/ui_deviceproperties.h:378
 msgid ""
@@ -4537,7 +4537,7 @@ msgstr "Strömmar"
 
 #: ../build/src/ui_appearancesettingspage.h:578
 msgid "Stretch image to fill playlist"
-msgstr "Sträck ut bilden för att fylla spellistan"
+msgstr "Sträck ut bilden för att fylla spellista"
 
 #: ../build/src/ui_appearancesettingspage.h:543
 #: ../build/src/ui_appearancesettingspage.h:544
@@ -4591,15 +4591,15 @@ msgstr "Systemfärger"
 
 #: ../build/src/ui_appearancesettingspage.h:554
 msgid "Tabbar colors"
-msgstr "Färger för Tabbar"
+msgstr "Färger för flikfält"
 
 #: ../build/src/ui_appearancesettingspage.h:587
 msgid "Tabbar large mode"
-msgstr "Stort läge för Tabbar"
+msgstr "Stort läge för flikfält"
 
 #: ../build/src/ui_appearancesettingspage.h:591
 msgid "Tabbar small mode"
-msgstr "Litet läge för Tabbar"
+msgstr "Litet läge för flikfält"
 
 #: widgets/fancytabwidget.cpp:712
 msgid "Tabs on top"
@@ -4828,7 +4828,7 @@ msgstr "Växla synlighet för snygg avisering"
 msgid "Tomorrow"
 msgstr "Imorgon"
 
-#: core/utilities.cpp:461
+#: core/utilities.cpp:471
 msgid "Too many songs selected."
 msgstr "För många låtar valda."
 
@@ -4955,7 +4955,7 @@ msgstr "Användning"
 
 #: ../build/src/ui_shortcutssettingspage.h:242
 msgid "Use Gnome (GSD) shortcuts when available"
-msgstr "Använd Gnome (GSD) genvägar när de är tillgängliga"
+msgstr "Använd Gnome (GSD)-genvägar när de är tillgängliga"
 
 #: ../build/src/ui_scrobblersettingspage.h:414
 msgid "Use HTTPS for local redirectserver"
@@ -5213,8 +5213,7 @@ msgid ""
 "Are you sure you want to continue?"
 msgstr ""
 "Du är på väg att ta bort en spellista som inte är en av dina favoriserade "
-"spellistor: denna spellista kommer att tas bort (denna åtgärd kan inte "
-"ångras).\n"
+"spellistor: spellistan kommer att tas bort (denna åtgärd kan inte ångras).\n"
 "Är du säker på att du vill fortsätta?"
 
 #: ../build/src/ui_loginstatewidget.h:168

@@ -26,9 +26,6 @@ if(LINUX)
   include(cmake/Rpm.cmake)
   include(cmake/Deb.cmake)
 endif()
-if(APPLE)
-  include(cmake/Dmg.cmake)
-endif()
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
@@ -36,9 +33,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 list(APPEND COMPILE_OPTIONS
-  $<$<COMPILE_LANGUAGE:C>:--std=c99>
-  $<$<COMPILE_LANGUAGE:CXX>:--std=c++17>
-  -U__STRICT_ANSI__
+  $<$<COMPILE_LANGUAGE:C>:-std=c99>
+  $<$<COMPILE_LANGUAGE:CXX>:-std=c++17>
   -Wall
   -Wextra
   -Wpedantic
@@ -400,7 +396,7 @@ endif(USE_BUNDLE AND NOT USE_BUNDLE_DIR)
 # Check that we have sqlite3 with FTS5
 
 if(NOT CMAKE_CROSSCOMPILING)
-  set(CMAKE_REQUIRED_FLAGS "--std=c++17")
+  set(CMAKE_REQUIRED_FLAGS "-std=c++17")
   set(CMAKE_REQUIRED_LIBRARIES ${QtCore_LIBRARIES} ${QtSql_LIBRARIES})
   check_cxx_source_runs("
     #include <QSqlDatabase>
@@ -416,6 +412,12 @@ if(NOT CMAKE_CROSSCOMPILING)
     "
     SQLITE3_FTS5
   )
+endif()
+
+# make dmg
+# This needs to be included after the major Qt version is set.
+if(APPLE)
+  include(cmake/Dmg.cmake)
 endif()
 
 # Set up definitions
